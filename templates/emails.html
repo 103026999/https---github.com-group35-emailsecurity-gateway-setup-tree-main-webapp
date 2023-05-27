@@ -19,33 +19,19 @@
 {% block content %}
 <h3>Emails</h3>
 <table class="table table-hover table-dark">
-  <thead>
+  <tr>
+    {% for header in headings %}
+      <th>{{header}}</th>
+    {% endfor%}
+  </tr>
+    {% for row in emailData %}
     <tr>
-      <th scope="col">From</th>
-      <th scope="col">To</th>
-      <th scope="col">Subject</th>
-      <th scope="col">Body</th>
+      <td>{{row.toAddress}}</td>
+      <td>{{row.fromAddress}}</td>
+      <td>{{row.subject}}</td>
+      <td>{{row.body}}</td>
     </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>asfasdf@gmail.com</th>
-      <td>user@group35.com</td>
-      <td>You have won the lottery</td>
-      <td>Dear sir madam you have won the lottery........</td>
-    </tr>
-    <tr>
-      <td>test@gmail.com</th>
-      <td>user@group35.com</td>
-      <td>This is a test</td>
-      <td>Dear sir This is a valid email........</td>
-    </tr>
-    <tr>
-      <td>fadsfadsf@gmail.com</th>
-      <td>user@group35.com</td>
-      <td>Please confirm paypal deatils</td>
-      <td>Dear sir please enter your paypal details</td>
-    </tr>
-  </tbody>
+    {% endfor %}
+  </tr>
 </table>
 {% endblock %}
