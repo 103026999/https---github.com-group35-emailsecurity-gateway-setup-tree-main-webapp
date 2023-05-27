@@ -18,20 +18,23 @@
 {% endblock %}
 {% block content %}
 <h3>Emails</h3>
-<table class="table table-hover table-dark">
-  <tr>
-    {% for header in headings %}
-      <th>{{header}}</th>
-    {% endfor%}
-  </tr>
-    {% for row in emailData %}
+<div class="outer">
+  <input type="text" id="searchInput" placeholder="Search for emails..">
+  <table id="table" class="table table-hover table-dark">
     <tr>
-      <td>{{row.toAddress}}</td>
-      <td>{{row.fromAddress}}</td>
-      <td>{{row.subject}}</td>
-      <td>{{row.body}}</td>
+      {% for header in headings %}
+        <th>{{header}}</th>
+      {% endfor%}
     </tr>
-    {% endfor %}
-  </tr>
-</table>
+      {% for row in emailData %}
+      <tr>
+        <td>{{row.toAddress}}</td>
+        <td>{{row.fromAddress}}</td>
+        <td>{{row.subject}}</td>
+        <td>{{row.body}}</td>
+      </tr>
+      {% endfor %}
+    </tr>
+  </table>
+</div>
 {% endblock %}
