@@ -6,29 +6,6 @@ from models.log import Log
 
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-    pieChartData = {'Task' : 'Total emails', 'Allowed' : 234, 'Blocked' : 153, 'Quarantine' : 86}
-    barChartData = {'Task' : 'Threats found', 'Virus' : 57, 'Spam' : 56, 'Phishing' : 40}
-    #print(data)
-    
-    return render_template('index.html', pieChartData=pieChartData, barChartData=barChartData)
-
-@app.route('/emails')
-def emails():
-    headings = ("From","To","Subject","Body")
-    emailData = csvToEmailList('data/emails.csv')
-    return render_template('emails.html',emailData=emailData,headings=headings)
-
-@app.route('/logs')
-def logs():
-    headings = ("Date","Time","From","To","Subject","Action")
-    logData = csvToLogList('data/logs.csv')
-    return render_template('logs.html', logData = logData, headings = headings)
-
-if __name__ == "__main__":
-    app.run(debug=True)
-
 def csvToEmailList(csvFilePath):
     #create list to store email objects
     emailList = []
@@ -54,3 +31,26 @@ def csvToLogList(csvFilePath):
 
         #print(emailList)
         return logList
+
+@app.route('/')
+def index():
+    pieChartData = {'Task' : 'Total emails', 'Allowed' : 234, 'Blocked' : 153, 'Quarantine' : 86}
+    barChartData = {'Task' : 'Threats found', 'Virus' : 57, 'Spam' : 56, 'Phishing' : 40}
+    #print(data)
+    
+    return render_template('index.html', pieChartData = pieChartData, barChartData = barChartData)
+
+@app.route('/emails')
+def emails():
+    headings = ("From","To","Subject","Body")
+    emailData = csvToEmailList('data/emails.csv')
+    return render_template('emails.html',emailData = emailData,headings = headings)
+
+@app.route('/logs')
+def logs():
+    headings = ("Date","Time","From","To","Subject","Action")
+    logData = csvToLogList('data/logs.csv')
+    return render_template('logs.html', logData = logData, headings = headings)
+
+if __name__ == "__main__":
+    app.run(debug=True)
