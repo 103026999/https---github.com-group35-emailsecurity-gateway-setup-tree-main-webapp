@@ -42,13 +42,13 @@ def index():
 
 @app.route('/emails')
 def emails():
-    headings = ("From","To","Subject","Body")
+    headings = ("ID","From","To","Subject","Body")
     emailData = csvToEmailList('data/emails.csv')
     return render_template('emails.html',emailData = emailData,headings = headings)
 
 @app.route('/logs')
 def logs():
-    headings = ("Date","Time","From","To","Subject","Action")
+    headings = ("ID","Date","Time","From","To","Subject","Action")
     logData = csvToLogList('data/logs.csv')
     return render_template('logs.html', logData = logData, headings = headings)
 
