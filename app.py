@@ -58,7 +58,7 @@ def readFromBinaryFileToEmailList(readBinFilePath):
 
     for email in readEmailList:
         emailOutput = str(email.id) +  " " + email.toAddress + " " + email.fromAddress + " " + email.subject + " " + email.body
-        #print(emailOutput)
+        print(emailOutput)
     
     return readEmailList
 
@@ -87,7 +87,7 @@ def readFromBinaryFileToLogList(readBinFilePath):
 
     for log in readLogList:
         logOutput = str(log.id) +  " " + log.date + " " + log.time + " " + log.toAddress + " " + log.fromAddress + " " + log.subject + " " + log.action
-        #print(logOutput)
+        print(logOutput)
     
     return readLogList
         
@@ -101,15 +101,15 @@ def index():
 
 @app.route('/emails')
 def emails():
+    # writeToBinaryFileFromEmailList('data/emails.bin')
     headings = ("ID","From","To","Subject","Body")
-    writeToBinaryFileFromEmailList('data/emails.bin')
     emailData = readFromBinaryFileToEmailList('data/emails.bin')
     return render_template('emails.html',emailData = emailData,headings = headings)
 
 @app.route('/logs')
 def logs():
+    # writeToBinaryFileFromLogList('data/logs.bin')
     headings = ("ID","Date","Time","From","To","Subject","Action")
-    writeToBinaryFileFromLogList('data/logs.bin')
     logData = readFromBinaryFileToLogList('data/logs.bin')
     return render_template('logs.html', logData = logData, headings = headings)
 
