@@ -56,9 +56,9 @@ def readFromBinaryFileToEmailList(readBinFilePath):
     with open(readBinFilePath, "rb") as f:
         readEmailList = pickle.load(f)
 
-    for email in readEmailList:
-        emailOutput = str(email.id) +  " " + email.toAddress + " " + email.fromAddress + " " + email.subject + " " + email.body
-        print(emailOutput)
+    # for email in readEmailList:
+        # emailOutput = str(email.id) +  " " + email.toAddress + " " + email.fromAddress + " " + email.subject + " " + email.body
+        # print(emailOutput)
     
     return readEmailList
 
@@ -85,9 +85,9 @@ def readFromBinaryFileToLogList(readBinFilePath):
     with open(readBinFilePath, "rb") as f:
         readLogList = pickle.load(f)
 
-    for log in readLogList:
-        logOutput = str(log.id) +  " " + log.date + " " + log.time + " " + log.toAddress + " " + log.fromAddress + " " + log.subject + " " + log.action
-        print(logOutput)
+    # for log in readLogList:
+        # logOutput = str(log.id) +  " " + log.date + " " + log.time + " " + log.toAddress + " " + log.fromAddress + " " + log.subject + " " + log.action
+        # print(logOutput)
     
     return readLogList
         
